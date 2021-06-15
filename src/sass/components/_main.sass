@@ -1,0 +1,60 @@
+.main
+    position: absolute
+    top: calc(50% - 200px)
+    left: calc(50% - 400px)
+    padding: 20px
+    width: 800px
+    height: 400px
+    border-radius: 35px
+    opacity: 0.8
+    background: linear-gradient(90deg, #ee5c87, #f1a4b5, #d587b3)
+    text-align: center
+    color: #fff
+    box-sizing: border-box
+
+    &__data
+        display: flex
+        flex-flow: row wrap
+        justify-content: space-between
+        margin: 85px auto
+        max-width: 600px
+
+    &__item
+        width: 200px
+        margin: 0 0 40px
+        line-height: 25px
+        font-size: 18px
+    
+    &__location
+        font-size: 25px
+
+    &__temperature
+        font-size: 25px
+
+    &__buttons
+        position: absolute
+        display: flex
+        justify-content: space-between
+        width: 200px
+
+    &__header
+        margin: 40px 0 0
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        height: 105px
+
+    &__weather
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin: 0 auto
+        min-width: 110px
+
+    &__icon
+        width: 45px
+        border-radius: 50%
+
+    &__today
+        font-size: 20px
+        transform: translateY(10px)
