@@ -27,9 +27,9 @@ document.querySelector('.modal').addEventListener('click', e => {
     }
 });
 
-document.querySelector('.header__search').addEventListener('keydown', e => {
+document.querySelector('.search__field').addEventListener('keydown', e => {
     if (e.code === 'Enter') {
-        const citySearchInput = document.querySelector('.header__search');
+        const citySearchInput = document.querySelector('.search__field');
         const city = citySearchInput.value;
         fetchApi(city);
     }

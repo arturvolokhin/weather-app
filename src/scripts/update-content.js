@@ -27,6 +27,11 @@ const updateWeather = data => {
     const mainContent = document.querySelector('.main__data');
     mainContent.innerHTML = '';
     mainContent.insertAdjacentHTML('afterbegin', paintWeatherGeolocation(data));
+
+    document.querySelector('.main__temperature').innerHTML = `${data.temperature}`;
+    document.querySelector('.main__location').innerText = `${data.geolocation}`;
+    document.querySelector('.main__today').innerText = `${data.today}`;
+    document.querySelector('.main__icon').setAttribute('src', `${data.icon}`);
 };
 
 export { updateWeatherHistory, updateWeather };

@@ -12,22 +12,17 @@ const fetchApi = city => {
                 const weather = new Weather(data);
                 const weatherHistory = getElementInLocalStorage('weatherHistory');
 
-                const check = weatherHistory.filter(
-                    item => item.geolocation === weather.geolocation,
-                );
+                weatherHistory.forEach(item => {
+                    if (item.geolocation === weather.geolocation) {
+                        const index = weatherHistory.indexOf(item, 0)
+                        weatherHistory.splice(`${index}`, 1);
+                    } 
+                })
 
-                if (check.length === 0) {
-                    weatherHistory.push(weather);
-                }
+                weatherHistory.push(weather); 
 
                 setElementInLocalStorage('weather', weather);
                 setElementInLocalStorage('weatherHistory', weatherHistory);
-
-                document.querySelector('.main__temperature').innerHTML = `${weather.temperature}`;
-                document.querySelector('.main__location').innerText = `${weather.geolocation}`;
-                document.querySelector('.main__today').innerText = `${weather.today}`;
-                document.querySelector('.main__icon').setAttribute('src', `${weather.icon}`);
-
                 updateWeather(weather);
                 updateWeatherHistory(weatherHistory);
             });
