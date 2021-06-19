@@ -2,6 +2,7 @@ import { getGeolocation } from './geolocationApi.js';
 import { fetchApi } from './fetchApi.js';
 import '../sass/main.sass';
 import '../fonts/stylesheet.css';
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 getGeolocation();
 
