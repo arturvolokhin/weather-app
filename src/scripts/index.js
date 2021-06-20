@@ -1,10 +1,22 @@
+import { getCityData } from './fetchApi.js';
 import { getGeolocation } from './geolocationApi.js';
-import { fetchApi } from './fetchApi.js';
 import '../sass/main.sass';
 import '../fonts/stylesheet.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 getGeolocation();
+
+const searchCity = () => {
+    const searchCityField = document.querySelector('.search__field');
+    const enteredCity = searchCityField.value;
+    searchCityField.value = '';
+    getCityData(enteredCity);
+}
+
+const toggleModal = () => {
+    document.querySelector('.modal').classList.toggle('visible');
+}
+
 
 document.querySelector('.main').addEventListener('click', e => {
     if (e.target.classList.contains('button-geolocation')) {
@@ -12,32 +24,27 @@ document.querySelector('.main').addEventListener('click', e => {
     }
 
     if (e.target.classList.contains('button-history')) {
-        document.querySelector('.modal').classList.toggle('visible');
+        toggleModal();
     }
 });
 
 document.querySelector('.modal').addEventListener('click', e => {
     if (e.target.classList.contains('modal__delete')) {
         document.querySelector('.modal__content').innerText = '';
-        localStorage.removeItem('weatherHistory');
+        localStorage.removeItem('weatherHistoryList');
     }
 
     if (e.target.classList.contains('modal__close')) {
-        document.querySelector('.modal').classList.toggle('visible');
+        toggleModal();
     }
 });
 
 document.querySelector('.search__field').addEventListener('keydown', e => {
     if (e.code === 'Enter') {
-        const citySearchInput = document.querySelector('.search__field');
-        const city = citySearchInput.value;
-        fetchApi(city);
+        searchCity();
     }
 });
 
 document.querySelector('.button-search').addEventListener('click', () => {
-    const citySearchInput = document.querySelector('.header__search');
-    const city = citySearchInput.value;
-    citySearchInput.value = '';
-    fetchApi(city);
+    searchCity();
 });

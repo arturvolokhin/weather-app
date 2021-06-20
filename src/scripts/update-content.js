@@ -1,37 +1,63 @@
-const paintWeatherGeolocation = data => `<p class="main__item main__item-time">${data.time}</p>
+import { Weather } from './Weather.js';
+import { setElementInLocalStorage, getElementInLocalStorage } from './localStorageApi.js';
+
+const paintDataSelectedCity = data => `<p class="main__item main__item-time">${data.time}</p>
             <p class="main__item main__item-feels">${data.feelsLike}</p>
             <p class="main__item main__item-cloudy">${data.cloudcover}</p>
             <p class="main__item main__item-wind">${data.wind}</p>
             <p class="main__item main__item-speed">${data.windSpeed}</p>
             <p class="main__item main__item-plessure">${data.plessure}</p>`;
 
-const paintWeatherHistoryItem = data => `<ul class="modal__list">
-                <li class="modal__item">${data.geolocation}</li>
-                <li class="modal__item">${data.temperature}</li>
-                <li class="modal__item">${data.time}</li>
-                <li class="modal__item">${data.wind}</li>
-                <li class="modal__item">${data.windSpeed}</li>
-                <li class="modal__item">${data.cloudcover}</li>
+const paintDataHistoryItem = data => `<ul class="modal__list">
+            <li class="modal__item">${data.geolocation}</li>
+            <li class="modal__item">${data.temperature}</li>
+            <li class="modal__item">${data.time}</li>
+            <li class="modal__item">${data.wind}</li>
+            <li class="modal__item">${data.windSpeed}</li>
+            <li class="modal__item">${data.cloudcover}</li>
             </ul>`;
 
-const updateWeatherHistory = data => {
-    const weatherHistoryTable = document.querySelector('.modal__content');
-    weatherHistoryTable.innerHTML = '';
+                
 
-    for (let i = 0; i < data.length; i++) {
-        weatherHistoryTable.insertAdjacentHTML('afterbegin', paintWeatherHistoryItem(data[i]));
-    }
+function updateLocalStorageData(data) {
+    const enteredCity = new Weather(data);
+    const historyList = getElementInLocalStorage('historyList');
+
+    historyList.forEach(city => {
+        if (city.geolocation ===  enteredCity.geolocation) {
+            const index = historyList.indexOf(city, 0)
+            historyList.splice(`${index}`, 1);
+        } 
+    })
+
+    historyList.push(enteredCity); 
+    setElementInLocalStorage('enteredCity', enteredCity);
+    setElementInLocalStorage('historyList', historyList);
+}
+
+
+const updateWeatherHistory = () => {
+    const historyList =  getElementInLocalStorage('historyList');
+    const historyModal = document.querySelector('.modal__content');
+    historyModal.innerHTML = '';
+
+    historyList.forEach(city => {
+        historyModal.insertAdjacentHTML('afterbegin',
+            paintDataHistoryItem(city));
+    })
 };
 
-const updateWeather = data => {
+
+const updateDisplay = (data) => {
     const mainContent = document.querySelector('.main__data');
+    const enteredCity = new Weather(data);
     mainContent.innerHTML = '';
-    mainContent.insertAdjacentHTML('afterbegin', paintWeatherGeolocation(data));
+    mainContent.insertAdjacentHTML('afterbegin', paintDataSelectedCity(enteredCity));
 
-    document.querySelector('.main__temperature').innerHTML = `${data.temperature}`;
-    document.querySelector('.main__location').innerText = `${data.geolocation}`;
-    document.querySelector('.main__today').innerText = `${data.today}`;
-    document.querySelector('.main__icon').setAttribute('src', `${data.icon}`);
+    document.querySelector('.main__temperature').innerHTML = `${enteredCity.temperature}`;
+    document.querySelector('.main__location').innerText = `${enteredCity.geolocation}`;
+    document.querySelector('.main__today').innerText = `${enteredCity.today}`;
+    document.querySelector('.main__icon').setAttribute('src', `${enteredCity.icon}`);
 };
 
-export { updateWeatherHistory, updateWeather };
+export { updateLocalStorageData, updateWeatherHistory, updateDisplay };

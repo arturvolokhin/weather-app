@@ -3,10 +3,10 @@ function setElementInLocalStorage(key, element) {
 }
 
 function getElementInLocalStorage(key) {
-    if (!localStorage.weatherHistory) {
-        const weatherHistory = [];
-        setElementInLocalStorage('weatherHistory', weatherHistory);
-        return weatherHistory;
+    if (!localStorage.historyList) {
+        const historyList = [];
+        setElementInLocalStorage('historyList', historyList);
+        return historyList;
     }
     return JSON.parse(localStorage.getItem(key));
 }

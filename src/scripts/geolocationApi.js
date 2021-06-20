@@ -1,12 +1,12 @@
-import { fetchApi } from './fetchApi.js';
+import { getCityData } from './fetchApi';
 
 function getGeolocation() {
     navigator.geolocation.getCurrentPosition(position => {
-        const geo = `${position.coords.latitude.toFixed(2)},${position.coords.longitude.toFixed(
-            2,
-        )}`;
-        fetchApi(geo);
+        const geo = `${position.coords.latitude.toFixed(4)},
+            ${position.coords.longitude.toFixed(4,)}`;   
+        getCityData(geo);
     });
+
 }
 
 export { getGeolocation };
