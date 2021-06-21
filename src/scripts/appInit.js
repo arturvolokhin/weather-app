@@ -1,4 +1,4 @@
-import { updateDisplay, updateLocalStorageData, updateWeatherHistory } from "./update-content";
+import { updateDisplay, updateLocalStorageData, updateWeatherHistory } from "./updateContent";
 
 const appInit = (city) => {
     updateDisplay(city);

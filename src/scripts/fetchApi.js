@@ -1,4 +1,4 @@
-import { appInit } from './app-init.js';
+import { appInit } from './appInit.js';
 
 const getCityData = city => {
     if (city.match(/[a-zA-Z0-9]/)) {

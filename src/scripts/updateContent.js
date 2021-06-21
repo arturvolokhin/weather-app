@@ -1,4 +1,4 @@
-import { Weather } from './Weather.js';
+import { getWeatherData } from './weatherData.js';
 import { setElementInLocalStorage, getElementInLocalStorage } from './localStorageApi.js';
 
 const paintDataSelectedCity = data => `<p class="main__item main__item-time">${data.time}</p>
@@ -20,7 +20,7 @@ const paintDataHistoryItem = data => `<ul class="modal__list">
                 
 
 const updateLocalStorageData = (data) => {
-    const enteredCity = new Weather(data);
+    const enteredCity = getWeatherData(data);
     const historyList = getElementInLocalStorage('historyList');
 
     historyList.forEach(city => {
@@ -50,7 +50,7 @@ const updateWeatherHistory = () => {
 
 const updateDisplay = (data) => {
     const mainContent = document.querySelector('.main__data');
-    const enteredCity = new Weather(data);
+    const enteredCity = getWeatherData(data);
     mainContent.innerHTML = '';
     mainContent.insertAdjacentHTML('afterbegin', paintDataSelectedCity(enteredCity));
 
