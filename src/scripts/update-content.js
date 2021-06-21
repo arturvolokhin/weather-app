@@ -19,7 +19,7 @@ const paintDataHistoryItem = data => `<ul class="modal__list">
 
                 
 
-function updateLocalStorageData(data) {
+const updateLocalStorageData = (data) => {
     const enteredCity = new Weather(data);
     const historyList = getElementInLocalStorage('historyList');
 

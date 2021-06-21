@@ -1,8 +1,8 @@
-function setElementInLocalStorage(key, element) {
+const setElementInLocalStorage = (key, element) => {
     return localStorage.setItem(key, JSON.stringify(element));
 }
 
-function getElementInLocalStorage(key) {
+const getElementInLocalStorage = (key) => {
     if (!localStorage.historyList) {
         const historyList = [];
         setElementInLocalStorage('historyList', historyList);
