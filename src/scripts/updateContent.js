@@ -1,7 +1,7 @@
 import { getWeatherData } from './weatherData.js';
 import { setElementInLocalStorage, getElementInLocalStorage } from './localStorageApi.js';
 
-const paintDataSelectedCity = data => `<p class="main__item main__item-time">${data.time}</p>
+const paintDataEnteredCity = data => `<p class="main__item main__item-time">${data.time}</p>
             <p class="main__item main__item-feels">${data.feelsLike}</p>
             <p class="main__item main__item-cloudy">${data.cloudcover}</p>
             <p class="main__item main__item-wind">${data.wind}</p>
@@ -52,7 +52,7 @@ const updateDisplay = (data) => {
     const mainContent = document.querySelector('.main__data');
     const enteredCity = getWeatherData(data);
     mainContent.innerHTML = '';
-    mainContent.insertAdjacentHTML('afterbegin', paintDataSelectedCity(enteredCity));
+    mainContent.insertAdjacentHTML('afterbegin', paintDataEnteredCity(enteredCity));
 
     document.querySelector('.main__temperature').innerHTML = `${enteredCity.temperature}`;
     document.querySelector('.main__location').innerText = `${enteredCity.geolocation}`;

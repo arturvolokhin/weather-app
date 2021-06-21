@@ -6,7 +6,6 @@ const getElementInLocalStorage = (key) => {
     if (!localStorage.historyList) {
         const historyList = [];
         setElementInLocalStorage('historyList', historyList);
-        return historyList;
     }
     return JSON.parse(localStorage.getItem(key));
 }
