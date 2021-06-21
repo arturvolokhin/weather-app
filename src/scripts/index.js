@@ -31,7 +31,7 @@ document.querySelector('.main').addEventListener('click', e => {
 document.querySelector('.modal').addEventListener('click', e => {
     if (e.target.classList.contains('modal__delete')) {
         document.querySelector('.modal__content').innerText = '';
-        localStorage.removeItem('weatherHistoryList');
+        localStorage.removeItem('historyList');
     }
 
     if (e.target.classList.contains('modal__close')) {
