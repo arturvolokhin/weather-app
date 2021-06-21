@@ -8,9 +8,4 @@ module.exports = merge(base, {
 
     devtool: 'source-map',
 
-    output: {
-        path: path.resolve(__dirname, './distProd'),
-        filename: 'prod.bundle.js',
-    },
-
 });
