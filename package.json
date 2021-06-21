@@ -23,6 +23,7 @@
   "homepage": "https://github.com/arturvolokhin/weather-app#readme",
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "copy-webpack-plugin": "^9.0.0",
     "css-loader": "^5.2.6",
     "eslint": "^7.28.0",
     "eslint-config-airbnb-base": "^14.2.1",
