@@ -1,9 +1,9 @@
 .main
     position: relative
     margin: calc(50vh - 250px) auto
-    padding: 20px
-    width: 1000px
-    height: 500px
+    padding: 30px
+    max-width: 1000px
+    min-height: 500px
     border-radius: 35px
     background: url(../images/background/main_content.jpg) no-repeat center / cover
     text-align: center
@@ -31,17 +31,21 @@
         font-size: 25px
 
     &__buttons
-        position: absolute
         display: flex
         justify-content: space-between
         width: 200px
 
-    &__header
+    &__content
         margin: 50px 0 0
         display: flex
         flex-direction: column
         justify-content: space-between
         height: 115px
+
+    &__header
+        display: flex
+        flex-flow: row wrap
+        justify-content: space-between
 
     &__weather
         display: flex

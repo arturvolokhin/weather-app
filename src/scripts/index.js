@@ -1,5 +1,5 @@
-import { getCityData } from './fetchApi.js';
-import { getGeolocation } from './geolocationApi.js';
+import { getCityData } from './utils/fetch.js';
+import { getGeolocation } from './utils/getGeolocation.js';
 import '../sass/main.sass';
 import '../fonts/stylesheet.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'

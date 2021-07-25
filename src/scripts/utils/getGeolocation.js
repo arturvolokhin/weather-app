@@ -1,4 +1,4 @@
-import { getCityData } from './fetchApi';
+import { getCityData } from './fetch';
 
 const getGeolocation = () => {
     navigator.geolocation.getCurrentPosition(position => {

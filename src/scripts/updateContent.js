@@ -1,5 +1,5 @@
 import { getWeatherData } from './weatherData.js';
-import { setElementInLocalStorage, getElementInLocalStorage } from './localStorageApi.js';
+import { setElementInLocalStorage, getElementInLocalStorage } from './utils/localStorage.js';
 
 const paintDataEnteredCity = data => `<p class="main__item main__item-time">${data.time}</p>
             <p class="main__item main__item-feels">${data.feelsLike}</p>

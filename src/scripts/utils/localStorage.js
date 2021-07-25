@@ -1,12 +1,10 @@
 const setElementInLocalStorage = (key, element) => {
-    return localStorage.setItem(key, JSON.stringify(element));
+    localStorage.setItem(key, JSON.stringify(element));
 }
 
 const getElementInLocalStorage = (key) => {
-    if (!localStorage.historyList) {
-        const historyList = [];
-        setElementInLocalStorage('historyList', historyList);
-    }
+    !localStorage.getItem(key) &&
+        setElementInLocalStorage(key, []);
     return JSON.parse(localStorage.getItem(key));
 }
 
